@@ -1,0 +1,47 @@
+{
+    "questions": [
+      {
+        "gameVideoUrl": "https://www.example.com/video1.mp4",
+        "partnerName": "Partner 1",
+        "questionText": "What is the capital of France?",
+        "answerLabels": ["Paris", "London"],
+        "correctAnswer": "Paris"
+      },
+      {
+        "gameVideoUrl": "https://www.example.com/video2.mp4",
+        "partnerName": "Partner 2",
+        "questionText": "Who painted the Mona Lisa?",
+        "answerLabels": ["Leonardo da Vinci", "Pablo Picasso"],
+        "correctAnswer": "Leonardo da Vinci"
+      },
+      {
+        "gameVideoUrl": "https://www.example.com/video3.mp4",
+        "partnerName": "Partner 3",
+        "questionText": "What is the largest planet in our solar system?",
+        "answerLabels": ["Jupiter", "Saturn"],
+        "correctAnswer": "Jupiter"
+      },
+      {
+        "gameVideoUrl": "https://www.example.com/video4.mp4",
+        "partnerName": "Partner 4",
+        "questionText": "Which country won the FIFA World Cup in 2018?",
+        "answerLabels": ["France", "Croatia"],
+        "correctAnswer": "France"
+      },
+      {
+        "gameVideoUrl": "https://www.example.com/video5.mp4",
+        "partnerName": "Partner 5",
+        "questionText": "What is the chemical symbol for gold?",
+        "answerLabels": ["Au", "Ag"],
+        "correctAnswer": "Au"
+      },
+      {
+        "gameVideoUrl": "https://www.example.com/video6.mp4",
+        "partnerName": "Partner 6",
+        "questionText": "What is the largest ocean on Earth?",
+        "answerLabels": ["Pacific", "Atlantic"],
+        "correctAnswer": "Pacific"
+      }
+    ]
+  }
+  
