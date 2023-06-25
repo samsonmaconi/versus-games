@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Avenir Next', sans-serif;
+  background-color: rgb(0, 0, 0);
+}
