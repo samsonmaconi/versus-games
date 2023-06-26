@@ -19,6 +19,10 @@ const Menu = (props: { className: any }) => {
 };
 
 const Navbar = () => {
+  const handlesNavItemClicked = (event: any) => {
+    // capture telemetry data
+  };
+
   return (
     <nav>
       <ul className="flex justify-between gap-6 sm:flex-col">
@@ -30,6 +34,7 @@ const Navbar = () => {
             <a
               aria-label={item.name}
               className="group flex gap-2 font-semibold hover:font-bold"
+              onClick={handlesNavItemClicked}
               href={item.url}
             >
               <Icon className="group-hover:scale-125" name={item.icon} />

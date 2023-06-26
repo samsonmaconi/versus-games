@@ -1,0 +1,51 @@
+// Note: no Tailwind support for dynamic css classes
+
+$versus_pink: #FF005C;
+$versus_green: #00B588;
+$versus_grey: #8C8CA1;
+$versus_onyx: #0E0E2C;
+
+.SIDE_A_PLAYED {
+    & #vote-button-0 {
+        background-color: $versus_pink;
+        color: #FFFFFF;
+        cursor: default;
+    }
+    & #vote-button-1 {
+        background-color: $versus_onyx;
+        color: $versus_grey;
+        opacity: 0.4;
+        cursor: default;
+    }
+}
+
+.SIDE_B_PLAYED {
+    & #vote-button-1 {
+        background-color: $versus_green;
+        color: #FFFFFF;
+        cursor: default;
+    }
+    & #vote-button-0 {
+        background-color: $versus_onyx;
+        color: $versus_grey;
+        opacity: 0.4;
+        cursor: default;
+    }
+}
+
+// .SIDE_A_PLAYED #vote-button-0 {
+//     background-color: $versus_pink; 
+//     color: #FFFFFF; 
+// } 
+// .SIDE_A_PLAYED #vote-button-1 {
+//     background-color: $versus_onyx;
+//     color: $versus_grey;
+// }
+// .SIDE_B_PLAYED #vote-button-1 {
+//     background-color: $versus_green;
+//     color: #FFFFFF;
+// }
+// .SIDE_B_PLAYED #vote-button-0 {
+//     background-color: $versus_onyx;
+//     color: $versus_grey;
+// } 

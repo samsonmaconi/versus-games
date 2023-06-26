@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Button = (props: any) => {
-  const { label, onClick, type, className } = props;
+  const { id, label, onClick, type, className } = props;
 
   const handleClick = (event: any) => {
     // capture button telemetry data
@@ -11,6 +11,7 @@ const Button = (props: any) => {
 
   return (
     <button
+      id={id}
       className={`${className}`}
       aria-label={label}
       type={type}
@@ -26,6 +27,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
