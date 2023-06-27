@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { VoteButtons } from "../Button";
 import {
   updateAnsweredQuestion,
   useAppDispatch,
   useAppSelector,
 } from "../../redux";
+import { animated, useSpring, config } from "@react-spring/web";
 
 const DEFAULT_PARTNER_LOGO = "https://via.placeholder.com/150";
 
@@ -30,8 +31,26 @@ const QnACard = () => {
     );
   };
 
+  useEffect(() => {
+    // fall animation
+    fallSpringsApi.start({
+      from: {
+        y: -100,
+      },
+      to: {
+        y: 0,
+      },
+      config: config.slow,
+    });
+  }, [activeQuestionIndex]);
+
+  const [fallSprings, fallSpringsApi] = useSpring(() => ({
+    from: { y: -100 },
+    to: { y: 0 },
+  }));
+
   return allQuestions.length ? (
-    <div className="mx-4 my-6">
+    <animated.div className="mx-4 my-6" style={{ ...fallSprings }}>
       <div className="flex flex-row items-center gap-2 md:flex-col md:items-start">
         <img
           className="h-12 w-12 rounded-full"
@@ -51,7 +70,7 @@ const QnACard = () => {
           selectedChoiceIndex={answerIndices[activeQuestionIndex]}
         />
       </div>
-    </div>
+    </animated.div>
   ) : null;
 };
 

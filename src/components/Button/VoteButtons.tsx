@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import "./VoteButtons.scss";
 import { Icon } from "../Icons";
+import { animated, useSpring, config } from "@react-spring/web";
 
 enum VoteButtonsState {
   UNPLAYED = "UNPLAYED",
@@ -16,6 +17,13 @@ const VoteButtons = (props: any) => {
   const [playState, setPlayState] = useState(VoteButtonsState.UNPLAYED);
 
   useEffect(() => {
+    // rotate and zoom out animation
+    rotateSpringsApi.start({
+      from: { transform: "rotate(-360deg) scale(0.2)" },
+      to: { transform: "rotate(360deg) scale(1)" },
+      config: config.molasses,
+    });
+
     updatePlayState();
   });
 
@@ -59,6 +67,11 @@ const VoteButtons = (props: any) => {
     );
   };
 
+  const [rotateSprings, rotateSpringsApi] = useSpring(() => ({
+    from: { transform: "rotate(-360deg) scale(0.2)" },
+    to: { transform: "rotate(360deg) scale(1)" },
+  }));
+
   return (
     <div className={`group relative flex gap-1 ${playState}`}>
       {renderVoteButton(
@@ -66,10 +79,12 @@ const VoteButtons = (props: any) => {
         0,
         "text-versus_pink sm:hover:bg-versus_pink sm:hover:text-white"
       )}
-      <Icon
-        name="VersusDark"
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform "
-      />
+      <animated.div style={rotateSprings}>
+        <Icon
+          name="VersusDark"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform "
+        />
+      </animated.div>
       {renderVoteButton(
         choice2,
         1,
