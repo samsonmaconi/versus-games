@@ -114,19 +114,27 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
       <div className="absolute right-0 top-1/2 z-[100] flex -translate-y-1/2 transform flex-col gap-3 p-2">
         <Button
           id={`previous-question`}
-          className="top-4"
+          className={`${
+            currentSlide === 0 ? "cursor-not-allowed opacity-50" : ""
+          } top-4`}
           icon="CircleCaret"
           iconOnly
           label="Previous Question"
           onClick={goToPreviousSlide}
+          disabled={currentSlide === 0}
         />
         <Button
           id={`next-question`}
-          className="top-4 rotate-180"
+          className={`${
+            currentSlide === slidesCount - 1
+              ? "cursor-not-allowed opacity-50"
+              : ""
+          } top-4 rotate-180`}
           icon="CircleCaret"
           iconOnly
           label="Next Question"
           onClick={goToNextSlide}
+          disabled={currentSlide === slidesCount - 1}
         />
       </div>
     );
