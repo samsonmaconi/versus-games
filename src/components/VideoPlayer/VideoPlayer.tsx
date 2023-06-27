@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 const VideoPlayer = (props: any) => {
@@ -25,9 +25,19 @@ const renderVideoPlayer = (
 // tested for mp4 videos only
 const VideoComponent = (props: any) => {
   const { src, autoplay, muted = true } = props;
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const handleToggleMute = () => {
+    setIsMuted((prevIsMuted) => !prevIsMuted);
+    videoRef.current && (videoRef.current.muted = !isMuted);
+  };
+
   return (
     <div style={{ height: "100vh", overflow: "hidden" }}>
       <video
+        ref={videoRef}
+        onClick={handleToggleMute}
         style={{
           objectFit: "cover",
           width: "100%",
