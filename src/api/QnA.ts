@@ -3,6 +3,7 @@ export type QnAQuestion = {
     questionText: string;
     answerChoices: string[];
     partnerName: string;
+    partnerLogo: string;
     gameVideoUrl: string;
     answeredIndex?: number;
     correctAnswer?: string;

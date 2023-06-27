@@ -1,54 +1,40 @@
 {
-    "questions": [
-      {
-        "id": "1",
-        "gameVideoUrl": "https://www.example.com/video1.mp4",
-        "partnerName": "City of Vancouver",
-        "questionText": "What is the name of the prominent art institution located in Vancouver, Canada, known for its diverse collection of contemporary and historical artworks?",
-        "answerChoices": ["Vancouver Art Gallery", "Vancouver Science Center"],
-        "correctAnswer": "Vancouver Art Gallery"
-      },
-      {
-        "id": "2",
-        "gameVideoUrl": "https://www.example.com/video2.mp4",
-        "partnerName": "Vancouver Art Gallery",
-        "questionText": "Who painted the Mona Lisa?",
-        "answerChoices": ["Leonardo da Vinci", "Pablo Picasso"],
-        "correctAnswer": "Leonardo da Vinci"
-      },
-      {
-        "id": "3",
-        "gameVideoUrl": "https://www.example.com/video3.mp4",
-        "partnerName": "National Geographic",
-        "questionText": "What is the largest planet in our solar system?",
-        "answerChoices": ["Jupiter", "Saturn"],
-        "correctAnswer": "Jupiter"
-      },
-      {
-        "id": "4",
-        "gameVideoUrl": "https://www.example.com/video4.mp4",
-        "partnerName": "Soccer.com",
-        "questionText": "Which country won the FIFA World Cup in 2018?",
-        "answerChoices": ["France", "Croatia"],
-        "correctAnswer": "France"
-      },
-      {
-        "id": "5",
-        "gameVideoUrl": "https://www.example.com/video5.mp4",
-        "partnerName": "Chemistry.com",
-        "questionText": "What is the chemical symbol for gold?",
-        "answerChoices": ["Au", "Ag"],
-        "correctAnswer": "Au"
-      },
-      {
-        "id": "6",
-        "gameVideoUrl": "https://www.example.com/video6.mp4",
-        "partnerName": "National Geographic",
-        "questionText": "What is the largest ocean on Earth?",
-        "answerChoices": ["Pacific", "Atlantic"],
-        "correctAnswer": "Pacific"
-      }
-    ]
-  }
-  
-  
+  "questions": [
+    {
+      "id": "1",
+      "gameVideoUrl": "https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "partnerName": "City of Vancouver - Engineering",
+      "partnerLogo": "https://pbs.twimg.com/profile_images/368650184/MVlogo_notext_400x400.png",
+      "questionText": "In the video, what type of car is featured driving on the street and dirt?",
+      "answerChoices": ["Subaru Outback", "Toyota Camry"],
+      "correctAnswer": "Subaru Outback"
+    },
+    {
+      "id": "2",
+      "gameVideoUrl": "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "partnerName": "Vancouver Art Gallery",
+      "partnerLogo": "https://res.cloudinary.com/sponsor-circle/image/upload/v1628099611/vy7vajwq9j9jmafx9qed.png",
+      "questionText": "In the video, what is the title of the animated short film?",
+      "answerChoices": ["Elephant's Dream", "Lion's Roar"],
+      "correctAnswer": "Elephant's Dream"
+    },
+    {
+      "id": "3",
+      "gameVideoUrl": "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "partnerName": "National Geographic",
+      "partnerLogo": "https://banner2.cleanpng.com/20180607/px/kisspng-national-geographic-television-channel-logo-5b19906362b300.1747935615284020194043.jpg",
+      "questionText": "In the video, what kind of animal is Big Buck Bunny?",
+      "answerChoices": ["Rabbit", "Kangaroo"],
+      "correctAnswer": "Rabbit"
+    },
+    {
+      "id": "4",
+      "gameVideoUrl": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "partnerName": "Sports.com",
+      "partnerLogo": "https://t4.ftcdn.net/jpg/03/02/12/83/360_F_302128359_q6aCwgAvdYZBPF4XSwxXddLPE0h3Kor1.jpg",
+      "questionText": "In the video, what sport is being played?",
+      "answerChoices": ["Soccer", "Basketball"],
+      "correctAnswer": "Soccer"
+    }
+  ]
+}
