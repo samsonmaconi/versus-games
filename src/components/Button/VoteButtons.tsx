@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
 import "./VoteButtons.scss";
@@ -64,7 +64,7 @@ const VoteButtons = (props: any) => {
       {renderVoteButton(
         choice1,
         0,
-        "text-versus_pink hover:bg-versus_pink hover:text-white"
+        "text-versus_pink sm:hover:bg-versus_pink sm:hover:text-white"
       )}
       <Icon
         name="VersusDark"
@@ -73,7 +73,7 @@ const VoteButtons = (props: any) => {
       {renderVoteButton(
         choice2,
         1,
-        "text-versus_green hover:bg-versus_green hover:text-white"
+        "text-versus_green sm:hover:bg-versus_green sm:hover:text-white"
       )}
     </div>
   );
