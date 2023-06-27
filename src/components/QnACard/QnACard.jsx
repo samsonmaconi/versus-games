@@ -1,33 +1,42 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Icon } from '../Icons'
-import { VoteButtons } from '../Button'
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "../Icons";
+import { VoteButtons } from "../Button";
 
-const QnACard = props => {
-    const { question, partnerName, partnerLogo, answerChoices } = props
+const QnACard = (props) => {
+  const { question, partnerName, partnerLogo, answerChoices, onAnswer } = props;
   return (
     <div className="mx-4 my-6">
-        <div className="flex flex-row md:flex-col gap-2">
-            <img className="rounded-full h-12 w-12" src={props.partnerLogo} alt={props.partnerName} />
-            <span className="font-bold">{props.partnerName}</span>
-        </div>
-        <p className="qna-card__question-text font-semibold mt-1">{props.question}</p>
-        <div className="mt-4">
-            <VoteButtons choice1={answerChoices[0]} choice2={answerChoices[1]}/>
-        </div>
+      <div className="flex flex-row items-center gap-2 md:flex-col md:items-start">
+        <img
+          className="h-12 w-12 rounded-full"
+          src={partnerLogo}
+          alt={partnerName}
+        />
+        <span className="font-bold">{partnerName}</span>
+      </div>
+      <p className="qna-card__question-text mt-1 font-semibold">{question}</p>
+      <div className="mt-4">
+        <VoteButtons
+          onVote={onAnswer}
+          choice1={answerChoices[0]}
+          choice2={answerChoices[1]}
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
 QnACard.defaultProps = {
-    partnerLogo: 'https://via.placeholder.com/150', // TODO: replace with default logo
-}
+  partnerLogo: "https://via.placeholder.com/150", // TODO: replace with default logo
+};
 
 QnACard.propTypes = {
-    partnerName: PropTypes.string.isRequired,
-    partnerLogo: PropTypes.string.isRequired,
-    question: PropTypes.string.isRequired,
-    answerChoices: PropTypes.arrayOf(PropTypes.string).isRequired,
-}
+  partnerName: PropTypes.string.isRequired,
+  partnerLogo: PropTypes.string.isRequired,
+  question: PropTypes.string.isRequired,
+  answerChoices: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onAnswer: PropTypes.func.isRequired,
+};
 
-export default QnACard
+export default QnACard;

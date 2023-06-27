@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Icons from "./Icons.svg";
 
 export type IconType =
+  | "CircleCaret"
   | "Home"
   | "Games"
   | "Activity"
@@ -11,6 +12,18 @@ export type IconType =
   | "VersusLight"
   | "VersusDark"
   | "VersusFull";
+
+export const IconArray: IconType[] = [
+  "CircleCaret",
+  "Home",
+  "Games",
+  "Activity",
+  "Account",
+  "Tips",
+  "VersusLight",
+  "VersusDark",
+  "VersusFull",
+];
 
 const Icon = (props: { className: any; name: IconType }) => {
   const { className, name } = props;

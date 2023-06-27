@@ -12,7 +12,7 @@ enum VoteButtonsState {
 }
 
 const VoteButtons = (props: any) => {
-  const { choice1, choice2 } = props;
+  const { choice1, choice2, onVote } = props;
   const [playState, setPlayState] = useState(VoteButtonsState.UNPLAYED);
 
   const handleVote = (event: any, choiceIndex: number, choice: string) => {
@@ -22,6 +22,7 @@ const VoteButtons = (props: any) => {
           ? VoteButtonsState.SIDE_A_PLAYED
           : VoteButtonsState.SIDE_B_PLAYED
       );
+      onVote && onVote(choiceIndex);
     }
   };
 
@@ -63,6 +64,7 @@ const VoteButtons = (props: any) => {
 VoteButtons.propTypes = {
   choice1: PropTypes.string.isRequired,
   choice2: PropTypes.string.isRequired,
+  onVote: PropTypes.func,
 };
 
 export default VoteButtons;

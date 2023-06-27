@@ -1,5 +1,6 @@
-import Icon from './Icon';
+import Icon, { IconArray } from './Icon';
 
 export {
-    Icon
+    Icon,
+    IconArray
 };
