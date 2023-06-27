@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Versus Games Front End Trial UX Dev
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Some missing considerations
+
+- Optimize video content (size, layout, format) for improved performance especially on mobile.
+- More Testing including performance and accessibility testing. However some considerations were made for acessibility.
+- Telemetry data collection for user usage feedback
 
 ## Available Scripts
 
