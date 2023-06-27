@@ -1,10 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Icon } from "../Icons";
 import { VoteButtons } from "../Button";
 
 const QnACard = (props) => {
-  const { question, partnerName, partnerLogo, answerChoices, onAnswer } = props;
+  const {
+    question,
+    partnerName,
+    partnerLogo,
+    answerChoices,
+    onAnswer,
+    selectedChoiceIndex,
+  } = props;
   return (
     <div className="mx-4 my-6">
       <div className="flex flex-row items-center gap-2 md:flex-col md:items-start">
@@ -21,6 +27,7 @@ const QnACard = (props) => {
           onVote={onAnswer}
           choice1={answerChoices[0]}
           choice2={answerChoices[1]}
+          selectedChoiceIndex={selectedChoiceIndex}
         />
       </div>
     </div>
@@ -37,6 +44,7 @@ QnACard.propTypes = {
   question: PropTypes.string.isRequired,
   answerChoices: PropTypes.arrayOf(PropTypes.string).isRequired,
   onAnswer: PropTypes.func.isRequired,
+  selectedChoiceIndex: PropTypes.number,
 };
 
 export default QnACard;

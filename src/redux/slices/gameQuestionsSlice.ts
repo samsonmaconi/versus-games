@@ -16,7 +16,7 @@ export const gameQuestionsSlice = createSlice({
     },
     updateAnsweredQuestion: (state, action) => {
       const { questionIndex, answerIndex } = action.payload
-      state.allQuestions[questionIndex].answerIndex = answerIndex;
+      state.allQuestions[questionIndex].answeredIndex = answerIndex;
     },
     reset: (state, action) => {
       state = {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
 import "./VoteButtons.scss";
@@ -12,8 +12,17 @@ enum VoteButtonsState {
 }
 
 const VoteButtons = (props: any) => {
-  const { choice1, choice2, onVote } = props;
+  const { choice1, choice2, onVote, selectedChoiceIndex } = props;
   const [playState, setPlayState] = useState(VoteButtonsState.UNPLAYED);
+
+  useEffect(() => {
+    selectedChoiceIndex !== undefined &&
+      setPlayState(
+        selectedChoiceIndex === 0
+          ? VoteButtonsState.SIDE_A_PLAYED
+          : VoteButtonsState.SIDE_B_PLAYED
+      );
+  }, []);
 
   const handleVote = (event: any, choiceIndex: number, choice: string) => {
     if (playState === VoteButtonsState.UNPLAYED) {
@@ -65,6 +74,7 @@ VoteButtons.propTypes = {
   choice1: PropTypes.string.isRequired,
   choice2: PropTypes.string.isRequired,
   onVote: PropTypes.func,
+  selectedChoiceIndex: PropTypes.number,
 };
 
 export default VoteButtons;

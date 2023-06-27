@@ -67,6 +67,7 @@ const renderQnACard = (
       partnerName={partnerName}
       question={questionText}
       onAnswer={handleQuestionAnswered(activeQuestionIndex)}
+      selectedChoiceIndex={question.answeredIndex}
     />
   );
 };

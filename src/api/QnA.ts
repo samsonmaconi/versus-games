@@ -4,5 +4,6 @@ export type QnAQuestion = {
     answerChoices: string[];
     partnerName: string;
     gameVideoUrl: string;
+    answeredIndex?: number;
     correctAnswer?: string;
 }
