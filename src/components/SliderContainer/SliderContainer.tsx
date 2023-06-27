@@ -1,16 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Icon } from "../Icons";
-import {
-  Splide,
-  SplideSlide,
-  SplideTrack,
-  Options,
-} from "@splidejs/react-splide";
+import { Splide, SplideSlide, Options } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/core";
 import Button from "../Button/Button";
 import { Breakpoints, useBreakpoint } from "../../utils";
 
+const MOBILE_MENU_HEIGHT = "90px";
 const SliderContainer = (props: { className: any; onSlideChange: any }) => {
   const { className, onSlideChange } = props;
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -61,7 +57,7 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
       height: "100vh",
       breakpoints: {
         640: {
-          height: "calc(100vh - 90px)",
+          height: `calc(100vh - ${MOBILE_MENU_HEIGHT})`,
         },
       },
     };
