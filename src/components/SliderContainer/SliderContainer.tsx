@@ -12,6 +12,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../redux";
+import { QnAQuestion } from "../../api/QnA";
 
 const MOBILE_MENU_HEIGHT = "90px";
 
@@ -19,17 +20,15 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
   const { className, onSlideChange } = props;
   const breakpoint = useBreakpoint();
   const isMobile = breakpoint === Breakpoints.sm;
-  const splideRef = useRef<Splide>(null);
-
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-  const slidesCount = 3;
-
-  // const allQuestions = useAppSelector(
-  //   (state) => state.gameQuestions.allQuestions,
-  //   () => true
-  // );
 
   const dispatcher = useAppDispatch();
+  const allQuestions: QnAQuestion[] = useAppSelector(
+    (state) => state.gameQuestions.allQuestions
+  );
+  const slidesCount = allQuestions.length;
+
+  const splideRef = useRef<Splide>(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
 
   const handleSlideChange = () => {
     dispatcher(updateActiveQuestionIndex(currentSlide));
@@ -90,26 +89,16 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
         options={sliderOptions}
         className=""
       >
-        {/* <li
-          className="splide__slide"
-          data-splide-youtube="https://www.youtube.com/watch?v=cdz__ojQOuU"
-        >
-          <img src="preview02.jpg" />
-        </li> */}
-        {/* <SliderVideoSlide src="https://www.youtube.com/watch?v=cdz__ojQOuU" /> */}
-        <SliderVideoSlide src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
-        <SliderImageSlide
-          src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-          alt="Tree"
-        />
-        <SliderImageSlide
-          src="https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg"
-          alt="Flower"
-        />
-        <SliderImageSlide
-          src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
-          alt="taj-mahal-mausoleum-in-agra"
-        />
+        {allQuestions.map((question, index) => {
+          const { id, gameVideoUrl } = question;
+          return (
+            <SliderVideoSlide
+              key={id}
+              src={gameVideoUrl}
+              autoplay={currentSlide === index}
+            />
+          );
+        })}
         <div className="splide__arrows absolute right-0 top-1/2 flex -translate-y-1/2  transform flex-row-reverse">
           <button className="splide__arrow splide__arrow--prev">
             <Icon name="CircleCaret" className={""} />{" "}
@@ -160,13 +149,12 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
     autoplay?: boolean;
   }): JSX.Element => {
     const { src, autoplay } = props;
-    const _autoplay = autoplay === undefined ? true : autoplay;
     return (
       <SplideSlide className="flex overflow-hidden">
         <VideoPlayer
           className="object-cover"
           videoUrl={src}
-          autoplay={_autoplay}
+          autoplay={autoplay}
         />
       </SplideSlide>
     );
