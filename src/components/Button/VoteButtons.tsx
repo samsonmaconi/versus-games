@@ -16,13 +16,22 @@ const VoteButtons = (props: any) => {
   const [playState, setPlayState] = useState(VoteButtonsState.UNPLAYED);
 
   useEffect(() => {
-    selectedChoiceIndex !== undefined &&
-      setPlayState(
-        selectedChoiceIndex === 0
-          ? VoteButtonsState.SIDE_A_PLAYED
-          : VoteButtonsState.SIDE_B_PLAYED
-      );
-  }, []);
+    updatePlayState();
+  });
+
+  const updatePlayState = () => {
+    switch (selectedChoiceIndex) {
+      case 0:
+        setPlayState(VoteButtonsState.SIDE_A_PLAYED);
+        break;
+      case 1:
+        setPlayState(VoteButtonsState.SIDE_B_PLAYED);
+        break;
+      default:
+        setPlayState(VoteButtonsState.UNPLAYED);
+        break;
+    }
+  };
 
   const handleVote = (event: any, choiceIndex: number, choice: string) => {
     if (playState === VoteButtonsState.UNPLAYED) {

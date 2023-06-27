@@ -3,20 +3,36 @@ import PropTypes from "prop-types";
 import { Icon } from "../Icons";
 import { Splide, SplideSlide, Options } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/core";
+import "@splidejs/splide-extension-video/dist/css/splide-extension-video.min.css";
 import Button from "../Button/Button";
 import { Breakpoints, useBreakpoint } from "../../utils";
+import { VideoPlayer } from "../VideoPlayer";
+import {
+  updateActiveQuestionIndex,
+  useAppDispatch,
+  useAppSelector,
+} from "../../redux";
 
 const MOBILE_MENU_HEIGHT = "90px";
+
 const SliderContainer = (props: { className: any; onSlideChange: any }) => {
   const { className, onSlideChange } = props;
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-  const slidesCount = 3;
   const breakpoint = useBreakpoint();
   const isMobile = breakpoint === Breakpoints.sm;
-
   const splideRef = useRef<Splide>(null);
 
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const slidesCount = 3;
+
+  // const allQuestions = useAppSelector(
+  //   (state) => state.gameQuestions.allQuestions,
+  //   () => true
+  // );
+
+  const dispatcher = useAppDispatch();
+
   const handleSlideChange = () => {
+    dispatcher(updateActiveQuestionIndex(currentSlide));
     onSlideChange && onSlideChange(currentSlide);
   };
 
@@ -60,6 +76,9 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
           height: `calc(100vh - ${MOBILE_MENU_HEIGHT})`,
         },
       },
+      video: {
+        autoplay: true,
+      },
     };
 
     return (
@@ -71,28 +90,26 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
         options={sliderOptions}
         className=""
       >
-        <SplideSlide key={1} className="flex overflow-hidden">
-          <img
-            className="object-cover"
-            src="https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg"
-            alt="Image 1"
-          />
-        </SplideSlide>
-        <SplideSlide key={2} className="flex overflow-hidden">
-          <img
-            className="object-cover"
-            src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
-            alt="Image 1"
-          />
-        </SplideSlide>
-        <SplideSlide key={3} className="flex overflow-hidden">
-          <img
-            className="object-cover"
-            src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-            alt="Image 1"
-          />
-        </SplideSlide>
-
+        {/* <li
+          className="splide__slide"
+          data-splide-youtube="https://www.youtube.com/watch?v=cdz__ojQOuU"
+        >
+          <img src="preview02.jpg" />
+        </li> */}
+        {/* <SliderVideoSlide src="https://www.youtube.com/watch?v=cdz__ojQOuU" /> */}
+        <SliderVideoSlide src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
+        <SliderImageSlide
+          src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+          alt="Tree"
+        />
+        <SliderImageSlide
+          src="https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg"
+          alt="Flower"
+        />
+        <SliderImageSlide
+          src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="
+          alt="taj-mahal-mausoleum-in-agra"
+        />
         <div className="splide__arrows absolute right-0 top-1/2 flex -translate-y-1/2  transform flex-row-reverse">
           <button className="splide__arrow splide__arrow--prev">
             <Icon name="CircleCaret" className={""} />{" "}
@@ -123,6 +140,35 @@ const SliderContainer = (props: { className: any; onSlideChange: any }) => {
           onClick={goToNextSlide}
         />
       </div>
+    );
+  };
+
+  const SliderImageSlide = (props: {
+    src: string;
+    alt?: string;
+  }): JSX.Element => {
+    const { src, alt } = props;
+    return (
+      <SplideSlide className="flex overflow-hidden">
+        <img className="object-cover" src={src} alt={alt} />
+      </SplideSlide>
+    );
+  };
+
+  const SliderVideoSlide = (props: {
+    src: string;
+    autoplay?: boolean;
+  }): JSX.Element => {
+    const { src, autoplay } = props;
+    const _autoplay = autoplay === undefined ? true : autoplay;
+    return (
+      <SplideSlide className="flex overflow-hidden">
+        <VideoPlayer
+          className="object-cover"
+          videoUrl={src}
+          autoplay={_autoplay}
+        />
+      </SplideSlide>
     );
   };
 
