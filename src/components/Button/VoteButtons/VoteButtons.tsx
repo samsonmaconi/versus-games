@@ -1,8 +1,8 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Button from "./Button";
+import Button from "../Button";
 import "./VoteButtons.scss";
-import { Icon } from "../Icons";
+import { Icon } from "../../Icons";
 import { animated, useSpring, config } from "@react-spring/web";
 
 enum VoteButtonsState {
@@ -73,7 +73,10 @@ const VoteButtons = (props: any) => {
   }));
 
   return (
-    <div className={`group relative flex gap-1 ${playState}`}>
+    <div
+      data-testid="vote-buttons"
+      className={`group relative flex gap-1 ${playState}`}
+    >
       {renderVoteButton(
         choice1,
         0,

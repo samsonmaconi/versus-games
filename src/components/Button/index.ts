@@ -1,5 +1,5 @@
 import Button from './Button';
-import VoteButtons from './VoteButtons';
+import VoteButtons from './VoteButtons/VoteButtons';
 
 export {
     Button,
